@@ -1,0 +1,40 @@
+import json
+from collections import Counter
+
+def load_students():
+    with open('students.json', 'r', encoding='utf-8') as f:
+        return json.load(f)
+
+def average_gpa(students):
+    if not students:
+        return 0.0
+    total_gpa = sum(s['gpa'] for s in students)
+    return round(total_gpa / len(students), 2)
+
+def top_students(students, top_n=3):
+    return sorted(students, key=lambda s: s['gpa'], reverse=True)[:top_n]
+
+def count_by_major(students):
+    majors = [s['major'] for s in students]
+    return dict(Counter(majors))
+
+def show_stats():
+    students = load_students()
+
+    print("\n📊 Thống kê sinh viên:\n")
+
+    avg = average_gpa(students)
+    print(f"🎓 GPA trung bình toàn hệ: {avg}\n")
+
+    print("🏅 Top 3 sinh viên có GPA cao nhất:")
+    for idx, s in enumerate(top_students(students), start=1):
+        print(f"{idx}. {s['name']} ({s['id']}) - GPA: {s['gpa']}")
+
+    print("\n📚 Số lượng sinh viên theo chuyên ngành:")
+    major_stats = count_by_major(students)
+    for major, count in major_stats.items():
+        print(f"- {major}: {count} sinh viên")
+
+# Cho phép chạy riêng stats.py để xem thống kê
+if __name__ == "__main__":
+    show_stats()

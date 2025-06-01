@@ -5,8 +5,13 @@ import os
 def load_students(file_path='students.json'):
     if not os.path.exists(file_path):
         return []
+
     with open(file_path, 'r', encoding='utf-8') as f:
-        return json.load(f)
+        content = f.read().strip()
+        if not content:  # Nếu file hoàn toàn rỗng thì coi như danh sách trống
+            return []
+        return json.loads(content)
+
 
 
 def save_students(students, file_path='students.json'):
