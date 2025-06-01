@@ -1,5 +1,4 @@
 #feature/delete_student.py
-# student/delete.py
 import json
 import os
 
