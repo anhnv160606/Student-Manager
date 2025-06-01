@@ -60,7 +60,7 @@ def main():
 
 
         elif choice == "4":
-        
+
 
                 if choice == "4":  # Giả sử 4 là chọn cập nhật
                     student_id = input("Nhập ID sinh viên cần cập nhật: ").strip()
@@ -95,6 +95,9 @@ def main():
 
         elif choice == "5":
             delete_student.delete_student()
+        elif choice == "6":
+            import stats
+            stats.show_stats()
         elif choice == "0":
             print("Exiting program. Goodbye!")
             break
