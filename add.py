@@ -24,7 +24,7 @@ def add_student(student_data: dict, file_path='students.json'):
 
    
     if any(student['id'] == student_data['id'] for student in students):
-        print(f" Sinh viên với ID {student_data['id']} đã tồn tại.")
+        print(f" Sinh viên với ID {student_data['id']} tồn tại.")
         return
 
     students.append(student_data)
